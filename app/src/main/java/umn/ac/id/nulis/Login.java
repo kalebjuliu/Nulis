@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -39,6 +40,9 @@ public class Login extends AppCompatActivity {
         logPassword = findViewById(R.id.password);
         logProgBar = findViewById(R.id.log_progressBar);
 
+//      Shared preferences untuk login credential
+        reLogin();
+
         linkToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,29 +59,49 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    //relogin account after first time login
+    private void reLogin() {
+        SharedPreferences sp1 = this.getSharedPreferences("Login", MODE_PRIVATE);
+
+        String savedEmail = sp1.getString("email", null);
+        String savedPassword = sp1.getString("password", null);
+        if (savedEmail != null && savedPassword != null) {
+            logEmail.getEditText().setText(savedEmail);
+            logPassword.getEditText().setText(savedPassword);
+
+            mAuth.signInWithEmailAndPassword(savedEmail, savedPassword).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    //to home page
+                    startActivity(new Intent(Login.this, Dashboard.class));
+                    finish();
+                }
+            });
+        }
+    }
+
     private void loginUser() {
         String email = logEmail.getEditText().getText().toString().trim();
         String password = logPassword.getEditText().getText().toString().trim();
 
         //Check if inputs are empty
-        if(email.isEmpty()){
+        if (email.isEmpty()) {
             logEmail.setError("Email is required!");
             logEmail.requestFocus();
             return;
         }
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             logPassword.setError("Password is required!");
             logPassword.requestFocus();
             return;
         }
 
         //Check if email and password is valid
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             logEmail.setError("Please provide a valid email!");
             logEmail.requestFocus();
             return;
         }
-        if(password.length() < 6){
+        if (password.length() < 6) {
             logPassword.setError("Password must be at least 6 characters");
             logPassword.requestFocus();
             return;
@@ -85,9 +109,19 @@ public class Login extends AppCompatActivity {
 
         logProgBar.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
+            if (task.isSuccessful()) {
+                // Save Login Credential
+                SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
+                SharedPreferences.Editor Ed = sp.edit();
+                Ed.putString("email", email);
+                Ed.putString("password", password);
+                Ed.apply();
+                //notes : to logout just set shared preferences (email, password) to null
+
+                //to home page
                 startActivity(new Intent(Login.this, Dashboard.class));
-            }else{
+                finish();
+            } else {
                 Toast.makeText(Login.this, "Failed to login, please check your credentials", Toast.LENGTH_LONG).show();
                 logProgBar.setVisibility(View.GONE);
             }
