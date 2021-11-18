@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/bookIv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="12dp"
+            android:padding="2dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_outline_book_24" />
+
+        <TextView
+            android:id="@+id/tv_book_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book Title"
+            android:textSize="12dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/bookIv"
+            android:fontFamily="@font/space_mono_bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/tv_book_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book short desription"
+            android:textSize="10dp"
+            android:layout_below="@id/tv_book_title"
+            android:layout_toEndOf="@+id/bookIv"
+            android:fontFamily="@font/space_mono"
+            android:textColor="#656565"/>
+
+        <ImageView
+            android:id="@+id/delete_book"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_delete_outline_24" />
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>
+

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "986761871600",
+    "project_id": "nulis-d3354",
+    "storage_bucket": "nulis-d3354.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986761871600:android:ad55c012a2447ccdb3c235",
+        "android_client_info": {
+          "package_name": "umn.ac.id.nulis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986761871600-q5ufidol7gdonssitc8anrei6voc6dmi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKrAzLp_ZzueIeu6F1AkCoZ5Cq4h6R-Ys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986761871600-q5ufidol7gdonssitc8anrei6voc6dmi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
