@@ -11,6 +11,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,6 +28,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import umn.ac.id.nulis.Adapter.BookAdapter;
+import umn.ac.id.nulis.Authentication.Login;
+import umn.ac.id.nulis.Authentication.Register;
 import umn.ac.id.nulis.Dialog.AddDialog;
 import umn.ac.id.nulis.HelperClass.Book;
 
@@ -125,5 +130,32 @@ public class Dashboard extends AppCompatActivity {
     private void openDialog() {
         AddDialog addDialog = new AddDialog();
         addDialog.show(getSupportFragmentManager(), "add book");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_logout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logoutBtn:
+                FirebaseAuth.getInstance().signOut();
+
+                SharedPreferences sp1 = this.getSharedPreferences("Login", MODE_PRIVATE);
+
+                sp1.edit().remove("email").commit();
+                sp1.edit().remove("password").commit();
+
+                Intent intent = new Intent(Dashboard.this, Login.class);
+                startActivity(intent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
