@@ -109,6 +109,8 @@ public class Register extends AppCompatActivity {
                                 .setValue(user).addOnCompleteListener(task1 -> {
                                     if(task1.isSuccessful()){
                                         Toast.makeText(Register.this, "User has been created", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(Register.this, Login.class);
+                                        startActivity(intent);
                                     }else{
                                         Toast.makeText(Register.this, "Failed to create user", Toast.LENGTH_LONG).show();
                                     }
