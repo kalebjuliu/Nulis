@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import umn.ac.id.nulis.Chapter.ChapterActivity;
@@ -26,11 +27,12 @@ import umn.ac.id.nulis.Location.LocationActivity;
 
 public class MainMenu extends AppCompatActivity {
     RelativeLayout chapterCard, characterCard, locationCard;
-    TextView tvChapterCount;
+    TextView tvChapterCount, tvLocationCount;
     String bookId;
-    int chapterCount;
+    Query getChapter, getLocation, getChara;
+    int chapterCount, locationCount, charaCount;
 
-    DatabaseReference database, databaseLocation;
+    DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +53,13 @@ public class MainMenu extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(appBarTitle);
 
-        database = FirebaseDatabase.getInstance("https://nulis-d3354-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book").child(bookId).child("Chapter");
-        database.addValueEventListener(new ValueEventListener() {
+        database = FirebaseDatabase.getInstance("https://nulis-d3354-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+        getChapter = database.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book").child(bookId).child("Chapter");
+        getLocation = database.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book").child(bookId).child("Location");
+        getChara = database.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book").child(bookId).child("Character");
+
+
+        getChapter.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
@@ -61,11 +67,41 @@ public class MainMenu extends AppCompatActivity {
                     chapterCount += dataSnapshot.getChildrenCount();
 
                 }
-                Log.d("COUNT", chapterCount + "");
+                Log.d("COUNT Chapter", chapterCount + "");
                 tvChapterCount.setText("Total chapter: " + chapterCount);
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
+        getChara.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
+                    charaCount += dataSnapshot.getChildrenCount();
 
+                }
+                Log.d("COUNT Chara", charaCount + "");
+//                tvChapterCount.setText("Total chapter: " + chapterCount);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        getLocation.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
+                    locationCount += dataSnapshot.getChildrenCount();
+
+                }
+                Log.d("COUNT Location", locationCount + "");
+//                tvChapterCount.setText("Total chapter: " + chapterCount);
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }

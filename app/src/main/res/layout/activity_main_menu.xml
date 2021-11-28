@@ -37,16 +37,17 @@
                 android:fontFamily="@font/space_mono_bold"
                 android:clickable="false"
                 android:textColor="@color/black"/>
+
             <TextView
                 android:id="@+id/tv_chapter_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chapter count"
-                android:textSize="10dp"
                 android:layout_below="@id/tv_chap_title"
                 android:layout_toEndOf="@+id/chaptersIv"
                 android:fontFamily="@font/space_mono"
-                android:textColor="#656565"/>
+                android:text="Chapter count"
+                android:textColor="#656565"
+                android:textSize="10dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -111,6 +112,8 @@
                 android:fontFamily="@font/space_mono_bold"
                 android:clickable="false"
                 android:textColor="@color/black"/>
+
+
         </RelativeLayout>
 
     </LinearLayout>
