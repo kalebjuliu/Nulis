@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import umn.ac.id.nulis.Chapter.ChapterActivity;
 import umn.ac.id.nulis.HelperClass.Chapter;
+import umn.ac.id.nulis.Location.LocationActivity;
 
 public class MainMenu extends AppCompatActivity {
     RelativeLayout chapterCard, characterCard, locationCard;
@@ -29,7 +30,7 @@ public class MainMenu extends AppCompatActivity {
     String bookId;
     int chapterCount;
 
-    DatabaseReference database;
+    DatabaseReference database, databaseLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class MainMenu extends AppCompatActivity {
                 tvChapterCount.setText("Total chapter: " + chapterCount);
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -88,7 +90,8 @@ public class MainMenu extends AppCompatActivity {
         locationCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("CARD", "location");
+                Intent intent = new Intent(getApplicationContext(), LocationActivity.class);
+                startActivity(intent);
             }
         });
 

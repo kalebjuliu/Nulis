@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASUS/Desktop/Mobile/UAS/Nulis/app/src/main/res/layout/activity_chapter.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/ASUS/Desktop/Mobile/UAS/Nulis/app/src/main/res/layout/activity_dashboard.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/ASUS/Desktop/Mobile/UAS/Nulis/app/src/main/res/layout/activity_location.xml" value="0.1" />
         <entry key="..\:/Users/ASUS/Desktop/Mobile/UAS/Nulis/app/src/main/res/layout/activity_main_menu.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/ASUS/Desktop/Mobile/UAS/Nulis/app/src/main/res/layout/chapter_item.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/ASUS/Desktop/Mobile/UAS/Nulis/app/src/main/res/layout/layout_add_chapter.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/ASUS/Desktop/Mobile/UAS/Nulis/app/src/main/res/layout/layout_add_location.xml" value="0.1" />
+        <entry key="..\:/Users/ASUS/Desktop/Mobile/UAS/Nulis/app/src/main/res/layout/location_item.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/ASUS/Desktop/Mobile/UAS/Nulis/app/src/main/res/menu/menu_logout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Archangel/AndroidStudioProjects/Nulis/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.421875" />
         <entry key="..\:/Users/Archangel/AndroidStudioProjects/Nulis/app/src/main/res/layout/activity_dashboard.xml" value="0.2957427536231884" />
