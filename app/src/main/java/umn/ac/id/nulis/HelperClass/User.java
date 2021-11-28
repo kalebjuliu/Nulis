@@ -1,4 +1,4 @@
-package umn.ac.id.nulis;
+package umn.ac.id.nulis.HelperClass;
 
 public class User {
     public String fullName, email;

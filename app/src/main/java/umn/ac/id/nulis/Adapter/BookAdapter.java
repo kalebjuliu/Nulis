@@ -1,4 +1,4 @@
-package umn.ac.id.nulis;
+package umn.ac.id.nulis.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import umn.ac.id.nulis.HelperClass.Book;
+import umn.ac.id.nulis.R;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
 

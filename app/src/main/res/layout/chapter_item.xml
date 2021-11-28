@@ -11,37 +11,28 @@
         android:padding="12dp">
 
         <ImageView
-            android:id="@+id/bookIv"
+            android:id="@+id/chapterItemIv"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginRight="12dp"
             android:padding="2dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_outline_book_24" />
+            android:src="@drawable/ic_baseline_menu_book_24" />
 
         <TextView
-            android:id="@+id/tv_book_title"
+            android:id="@+id/tv_chapterItem_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Book Title"
+            android:text="Chapter Title"
             android:textSize="12dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/bookIv"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/chapterItemIv"
             android:fontFamily="@font/space_mono_bold"
             android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/tv_book_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Book short desription"
-            android:textSize="10dp"
-            android:layout_below="@id/tv_book_title"
-            android:layout_toEndOf="@+id/bookIv"
-            android:fontFamily="@font/space_mono"
-            android:textColor="#656565"/>
 
         <ImageView
-            android:id="@+id/delete_book"
+            android:id="@+id/delete_chapter"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
@@ -50,5 +41,5 @@
 
 
     </RelativeLayout>
-</androidx.cardview.widget.CardView>
 
+</androidx.cardview.widget.CardView>

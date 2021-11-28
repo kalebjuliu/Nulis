@@ -1,15 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".MainMenu">
+    android:layout_margin="6dp">
 
-    <TextView
-        android:id="@+id/book_title_test"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TEST"/>
+        android:orientation="vertical">
 
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/chaptersCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/chaptersIv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="12dp"
+                android:padding="2dp"
+                android:layout_centerVertical="true"
+                android:clickable="false"
+                android:src="@drawable/ic_baseline_menu_book_24" />
+
+            <TextView
+                android:id="@+id/tv_chap_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chapters"
+                android:textSize="12dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/chaptersIv"
+                android:fontFamily="@font/space_mono_bold"
+                android:clickable="false"
+                android:textColor="@color/black"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/characterCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/charactersIv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="12dp"
+                android:padding="2dp"
+                android:layout_centerVertical="true"
+                android:clickable="false"
+                android:src="@drawable/ic_baseline_face_24" />
+
+            <TextView
+                android:id="@+id/tv_char_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Characters"
+                android:textSize="12dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/charactersIv"
+                android:fontFamily="@font/space_mono_bold"
+                android:clickable="false"
+                android:textColor="@color/black"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/locationCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/locationIv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="12dp"
+                android:padding="2dp"
+                android:layout_centerVertical="true"
+                android:clickable="false"
+                android:src="@drawable/ic_outline_explore_24" />
+
+            <TextView
+                android:id="@+id/tv_loc_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="12dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/locationIv"
+                android:fontFamily="@font/space_mono_bold"
+                android:clickable="false"
+                android:textColor="@color/black"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

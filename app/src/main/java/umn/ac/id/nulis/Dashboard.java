@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,8 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+
+import umn.ac.id.nulis.Adapter.BookAdapter;
+import umn.ac.id.nulis.Dialog.AddDialog;
+import umn.ac.id.nulis.HelperClass.Book;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -55,8 +58,14 @@ public class Dashboard extends AppCompatActivity {
             public void onItemClick(int position) {
                 Log.d("CARD CLICK", list.get(position).getbId());
                 Intent intent = new Intent(getApplicationContext(), MainMenu.class);
-                intent.putExtra("bookId", list.get(position).getbId());
-                intent.putExtra("bookTitle", list.get(position).getTitle());
+
+                SharedPreferences spBookId = getSharedPreferences("Book Info", MODE_PRIVATE);
+                SharedPreferences.Editor Ed = spBookId.edit();
+                Ed.putString("bId", list.get(position).getbId());
+                Ed.putString("bTitle", list.get(position).getTitle());
+
+                Ed.apply();
+
                 startActivity(intent);
             }
             @Override
