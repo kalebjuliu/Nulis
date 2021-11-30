@@ -27,7 +27,7 @@ import umn.ac.id.nulis.Location.LocationActivity;
 
 public class MainMenu extends AppCompatActivity {
     RelativeLayout chapterCard, characterCard, locationCard;
-    TextView tvChapterCount, tvLocationCount;
+    TextView tvChapterCount, tvLocationCount, tvCharacterCount;
     String bookId;
     Query getChapter, getLocation, getChara;
     int chapterCount, locationCount, charaCount;
@@ -43,6 +43,8 @@ public class MainMenu extends AppCompatActivity {
         characterCard = findViewById(R.id.characterCard);
         locationCard = findViewById(R.id.locationCard);
         tvChapterCount = findViewById(R.id.tv_chapter_count);
+        tvLocationCount = findViewById(R.id.tv_location_count);
+        tvCharacterCount = findViewById(R.id.tv_chara_count);
 
         //TextView test = findViewById(R.id.book_title_test);
         String appBarTitle = "";
@@ -63,11 +65,11 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
-                    chapterCount += dataSnapshot.getChildrenCount();
+                    if(!dataSnapshot.getKey().isEmpty()){
+                        chapterCount += 1;
+                    }
 
                 }
-                Log.d("COUNT Chapter", chapterCount + "");
                 tvChapterCount.setText("Total chapter: " + chapterCount);
             }
             @Override
@@ -79,12 +81,12 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
-                    charaCount += dataSnapshot.getChildrenCount();
+                    if(!dataSnapshot.getKey().isEmpty()){
+                        charaCount += 1;
+                    }
 
                 }
-                Log.d("COUNT Chara", charaCount + "");
-//                tvChapterCount.setText("Total chapter: " + chapterCount);
+                tvCharacterCount.setText("Total chapter: " + charaCount);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -95,12 +97,12 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
-                    locationCount += dataSnapshot.getChildrenCount();
-
+                    Log.d("COUNT Location", dataSnapshot.getKey());
+                    if(!dataSnapshot.getKey().isEmpty()){
+                        locationCount += 1;
+                    }
                 }
-                Log.d("COUNT Location", locationCount + "");
-//                tvChapterCount.setText("Total chapter: " + chapterCount);
+                tvLocationCount.setText("Total location: " + locationCount);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

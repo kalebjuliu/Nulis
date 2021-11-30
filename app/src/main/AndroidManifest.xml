@@ -12,13 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nulis">
         <activity
+            android:name=".Location.LocationDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".Location.LocationActivity" />
+        <activity
+            android:name=".Location.AddLocationActivity"
+            android:exported="false"
+            android:parentActivityName=".Location.LocationActivity" />
+        <activity
             android:name=".Chapter.ChapterActivity"
             android:exported="false"
-            android:parentActivityName=".MainMenu"/>
+            android:parentActivityName=".MainMenu" />
         <activity
             android:name=".Location.LocationActivity"
             android:exported="false"
-            android:parentActivityName=".MainMenu"/>
+            android:parentActivityName=".MainMenu" />
         <activity
             android:name=".MainMenu"
             android:exported="false"

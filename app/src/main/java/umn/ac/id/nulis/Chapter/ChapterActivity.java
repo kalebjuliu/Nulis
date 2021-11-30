@@ -74,7 +74,25 @@ public class ChapterActivity extends AppCompatActivity {
             }
             @Override
             public void onDeleteClick(int position) {
-                Log.d("click", "click delete");
+                AlertDialog.Builder builder = new AlertDialog.Builder(ChapterActivity.this);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        database.child(list.get(position).getcId()).removeValue().addOnCompleteListener(task1 -> {
+                            if(task1.isSuccessful()){
+                                Toast.makeText(ChapterActivity.this, "Chapter is deleted", Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(ChapterActivity.this, "Failed to delete chapter", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setMessage("Are you sure you want to delete this chapter?");
+                builder.show();
             }
         });
 

@@ -75,11 +75,21 @@
                 android:text="Characters"
                 android:textSize="12dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/charactersIv"
                 android:fontFamily="@font/space_mono_bold"
                 android:clickable="false"
                 android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tv_chara_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_char_title"
+                android:layout_toEndOf="@+id/charactersIv"
+                android:fontFamily="@font/space_mono"
+                android:text="Chapter count"
+                android:textColor="#656565"
+                android:textSize="10dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -107,11 +117,21 @@
                 android:text="Location"
                 android:textSize="12dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/locationIv"
                 android:fontFamily="@font/space_mono_bold"
                 android:clickable="false"
                 android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tv_location_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_loc_title"
+                android:layout_toEndOf="@+id/locationIv"
+                android:fontFamily="@font/space_mono"
+                android:text="Chapter count"
+                android:textColor="#656565"
+                android:textSize="10dp" />
 
 
         </RelativeLayout>

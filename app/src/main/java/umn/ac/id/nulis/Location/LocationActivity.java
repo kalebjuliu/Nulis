@@ -1,12 +1,16 @@
 package umn.ac.id.nulis.Location;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import umn.ac.id.nulis.Adapter.LocationAdapter;
-import umn.ac.id.nulis.Dialog.AddDialogLocation;
+import umn.ac.id.nulis.Chapter.ChapterActivity;
 import umn.ac.id.nulis.HelperClass.Location;
 import umn.ac.id.nulis.R;
 
@@ -62,11 +66,37 @@ public class LocationActivity extends AppCompatActivity {
         locAdapter.setOnItemClickListener(new LocationAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Log.d("CARD CLICK", list.get(position).getTitle());
+                Log.d("CARD CLICK", list.get(position).getlId());
+                SharedPreferences spLocationId = getSharedPreferences("Location Info", MODE_PRIVATE);
+                SharedPreferences.Editor Ed = spLocationId.edit();
+                Ed.putString("lId", list.get(position).getlId());
+                Ed.putString("lTitle", list.get(position).getTitle());
+                Ed.apply();
+
+                Intent intent = new Intent(getApplicationContext(), LocationDetailActivity.class);
+                startActivity(intent);
             }
             @Override
             public void onDeleteClick(int position) {
-                Log.d("click", "click delete");
+                AlertDialog.Builder builder = new AlertDialog.Builder(LocationActivity.this);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        database.child(list.get(position).getlId()).removeValue().addOnCompleteListener(task1 -> {
+                            if(task1.isSuccessful()){
+                                Toast.makeText(LocationActivity.this, "Location is deleted", Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(LocationActivity.this, "Failed to delete location", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setMessage("Are you sure you want to delete this location?");
+                builder.show();
             }
         });
 
@@ -75,7 +105,11 @@ public class LocationActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Location loc = new Location(dataSnapshot.child("title").getValue().toString(),
+                    Location loc = new Location(
+                            dataSnapshot.child("title").getValue().toString(),
+                            dataSnapshot.child("description").getValue().toString(),
+                            dataSnapshot.child("history").getValue().toString(),
+                            dataSnapshot.child("design").getValue().toString(),
                             dataSnapshot.getKey());
                     list.add(loc);
                     Log.d("DEBUG", dataSnapshot.getKey());
@@ -92,14 +126,10 @@ public class LocationActivity extends AppCompatActivity {
         fabAddLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDialog();
+                Intent intent = new Intent(getApplicationContext(), AddLocationActivity.class);
+                startActivity(intent);
             }
         });
-    }
-
-    private void openDialog() {
-        AddDialogLocation addDialog = new AddDialogLocation(bookId);
-        addDialog.show(getSupportFragmentManager(), "add location");
     }
 
 }

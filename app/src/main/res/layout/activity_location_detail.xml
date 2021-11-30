@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Location.LocationDetailActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+        <ImageView
+            android:id="@+id/location_detail_Iv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_outline_explore_24"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/location_detail_titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:textColor="#636363"
+            android:layout_below="@+id/location_detail_Iv"
+            android:text="Name"/>
+        <TextView
+            android:id="@+id/location_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@+id/location_detail_titleText"
+            android:text="Location Name"/>
+
+
+        <TextView
+            android:id="@+id/location_detail_descText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:layout_marginTop="15dp"
+            android:textColor="#636363"
+            android:layout_below="@+id/location_detail_title"
+            android:text="Description"/>
+        <TextView
+            android:id="@+id/location_detail_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:textColor="@color/black"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/location_detail_descText"
+            android:text="Location description"/>
+
+
+        <TextView
+            android:id="@+id/location_detail_hisText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:layout_marginTop="15dp"
+            android:textColor="#636363"
+            android:layout_below="@+id/location_detail_desc"
+            android:text="History"/>
+        <TextView
+            android:id="@+id/location_detail_his"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:textColor="@color/black"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/location_detail_hisText"
+            android:text="Location history"/>
+
+
+        <TextView
+            android:id="@+id/location_detail_desText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:layout_marginTop="15dp"
+            android:textColor="#636363"
+            android:layout_below="@+id/location_detail_his"
+            android:text="Design"/>
+        <TextView
+            android:id="@+id/location_detail_design"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:textColor="@color/black"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/location_detail_desText"
+            android:text="Location design"/>
+    </RelativeLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_edit_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="32dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:backgroundTint="@color/white" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

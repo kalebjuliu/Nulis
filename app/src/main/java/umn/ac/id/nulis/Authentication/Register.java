@@ -100,7 +100,6 @@ public class Register extends AppCompatActivity {
 
                     if(task.isSuccessful()){
                         User user = new User(name, email);
-                        Log.d("REGIS", user.fullName);
 
                         FirebaseDatabase database = FirebaseDatabase.getInstance("https://nulis-d3354-default-rtdb.asia-southeast1.firebasedatabase.app/");
                         DatabaseReference myRef = database.getReference("Users");

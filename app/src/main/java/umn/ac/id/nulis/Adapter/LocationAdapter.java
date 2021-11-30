@@ -45,6 +45,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     public void onBindViewHolder(@NonNull LocationAdapter.LocationViewHolder  holder, int position) {
         Location location = list.get(position);
         holder.locationTitle.setText(location.getTitle());
+        holder.locationDesc.setText(location.getDescription());
     }
 
     @Override
@@ -53,15 +54,15 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     }
 
     public static class LocationViewHolder extends RecyclerView.ViewHolder{
-        TextView locationTitle;
+        TextView locationTitle, locationDesc;
         ImageView locationDelete;
 
         public LocationViewHolder(@NonNull View itemView, LocationAdapter.OnItemClickListener listener) {
             super(itemView);
 
             locationTitle = itemView.findViewById(R.id.tv_locationItem_title);
+            locationDesc = itemView.findViewById(R.id.tv_locationItem_desc);
             locationDelete = itemView.findViewById(R.id.delete_location);
-
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
