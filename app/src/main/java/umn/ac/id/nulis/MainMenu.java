@@ -87,7 +87,7 @@ public class MainMenu extends AppCompatActivity {
                     }
 
                 }
-                tvCharacterCount.setText("Total chapter: " + charaCount);
+                tvCharacterCount.setText("Total character: " + charaCount);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
