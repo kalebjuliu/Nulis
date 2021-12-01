@@ -52,6 +52,9 @@ public class ChapterActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Chapters");
 
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.title_appbar_center);
+
         SharedPreferences sp1 = this.getSharedPreferences("Book Info", MODE_PRIVATE);
         bookId = sp1.getString("bId", null);
 
