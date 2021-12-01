@@ -16,6 +16,10 @@
             android:exported="false"
             android:parentActivityName=".Location.LocationActivity" />
         <activity
+            android:name=".Location.EditLocationActivity"
+            android:exported="false"
+            android:parentActivityName=".Location.LocationActivity" />
+        <activity
             android:name=".Location.AddLocationActivity"
             android:exported="false"
             android:parentActivityName=".Location.LocationActivity" />

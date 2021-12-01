@@ -23,6 +23,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
     public interface OnItemClickListener {
         void onItemClick(int position);
         void onDeleteClick(int position);
+        void onEditClick(int position);
     }
     public void setOnItemClickListener(ChapterAdapter.OnItemClickListener listener){
         mListener = listener;
@@ -53,13 +54,14 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
 
     public static class ChapterViewHolder extends RecyclerView.ViewHolder{
         TextView chapterTitle;
-        ImageView chapterDelete;
+        ImageView chapterDelete, chapterEdit;
 
         public ChapterViewHolder(@NonNull View itemView, ChapterAdapter.OnItemClickListener listener) {
             super(itemView);
 
             chapterTitle = itemView.findViewById(R.id.tv_chapterItem_title);
             chapterDelete = itemView.findViewById(R.id.delete_chapter);
+            chapterEdit = itemView.findViewById(R.id.edit_chapter);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +75,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
                     }
                 }
             });
+
             chapterDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,6 +83,18 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
                             listener.onDeleteClick(position);
+                        }
+                    }
+                }
+            });
+
+            chapterEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onEditClick(position);
                         }
                     }
                 }

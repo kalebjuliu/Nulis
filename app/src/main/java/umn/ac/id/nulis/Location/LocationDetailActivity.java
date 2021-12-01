@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,10 +19,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import umn.ac.id.nulis.Chapter.ChapterActivity;
 import umn.ac.id.nulis.HelperClass.Location;
 import umn.ac.id.nulis.R;
 
 public class LocationDetailActivity extends AppCompatActivity {
+    FloatingActionButton editLocation;
     String bookId, locationId, locationTitle;
     DatabaseReference database;
 
@@ -34,6 +39,7 @@ public class LocationDetailActivity extends AppCompatActivity {
         locDetailDesc = findViewById(R.id.location_detail_desc);
         locDetailHistory = findViewById(R.id.location_detail_his);
         locDetailDesign = findViewById(R.id.location_detail_design);
+        editLocation = findViewById(R.id.fab_edit_location);
 
         SharedPreferences sp1 = this.getSharedPreferences("Location Info", MODE_PRIVATE);
         locationId = sp1.getString("lId", null);
@@ -68,6 +74,14 @@ public class LocationDetailActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        editLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LocationDetailActivity.this, EditLocationActivity.class);
+                startActivity(intent);
             }
         });
     }

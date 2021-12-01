@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +35,7 @@ import umn.ac.id.nulis.Adapter.BookAdapter;
 import umn.ac.id.nulis.Authentication.Login;
 import umn.ac.id.nulis.Authentication.Register;
 import umn.ac.id.nulis.Dialog.AddDialog;
+import umn.ac.id.nulis.Dialog.EditDialog;
 import umn.ac.id.nulis.HelperClass.Book;
 
 public class Dashboard extends AppCompatActivity {
@@ -101,6 +103,11 @@ public class Dashboard extends AppCompatActivity {
                 }).setMessage("Are you sure you want to delete this book?");
                 builder.show();
             }
+
+            @Override
+            public void onEditClick(int position) {
+                openDialogEdit(position);
+            }
         });
 
         database.addValueEventListener(new ValueEventListener() {
@@ -129,13 +136,22 @@ public class Dashboard extends AppCompatActivity {
                 openDialog();
             }
         });
-
-
     }
 
     private void openDialog() {
         AddDialog addDialog = new AddDialog();
         addDialog.show(getSupportFragmentManager(), "add book");
+    }
+
+    private void openDialogEdit(int position) {
+        Bundle args = new Bundle();
+        args.putString("bookId", list.get(position).getbId());
+        args.putString("bookTitle", list.get(position).getTitle());
+        args.putString("bookDesc", list.get(position).getDesc());
+
+        EditDialog editDialog = new EditDialog();
+        editDialog.setArguments(args);
+        editDialog.show(getSupportFragmentManager(), "edit book");
     }
 
     @Override
