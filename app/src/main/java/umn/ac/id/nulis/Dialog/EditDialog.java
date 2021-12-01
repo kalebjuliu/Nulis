@@ -46,14 +46,17 @@ public class EditDialog extends AppCompatDialogFragment {
                     String newBookTitle = bookTitleInput.getEditText().getText().toString().trim();
                     String newBookDesc = bookDescInput.getEditText().getText().toString().trim();
 
-                    FirebaseDatabase database = FirebaseDatabase.getInstance("https://nulis-d3354-default-rtdb.asia-southeast1.firebasedatabase.app/");
-                    DatabaseReference myRef = database.getReference("Users");
+                    //mencegah mengupload data yang sama
+                    if((!newBookTitle.equals(bookTitle)) || (!newBookDesc.equals(bookTitle))){
+                        FirebaseDatabase database = FirebaseDatabase.getInstance("https://nulis-d3354-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                        DatabaseReference myRef = database.getReference("Users");
 
-                    Map<String, Object> postValues = new HashMap<String,Object>();
-                    postValues.put("title", newBookTitle);
-                    postValues.put("desc", newBookDesc);
+                        Map<String, Object> postValues = new HashMap<String,Object>();
+                        postValues.put("title", newBookTitle);
+                        postValues.put("desc", newBookDesc);
 
-                    myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book").child(bookId).updateChildren(postValues);
+                        myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book").child(bookId).updateChildren(postValues);
+                    }
                 });
         bookTitleInput = view.findViewById(R.id.add_book_title);
         bookDescInput = view.findViewById(R.id.add_book_desc);
