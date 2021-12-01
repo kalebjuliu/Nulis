@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nulis">
         <activity
+            android:name=".Character.AddCharacterActivity"
+            android:exported="false"
+            android:parentActivityName=".Character.CharacterActivity"/>
+        <activity
+            android:name=".Character.CharacterActivity"
+            android:exported="false" />
+        <activity
             android:name=".Location.LocationDetailActivity"
             android:exported="false"
             android:parentActivityName=".Location.LocationActivity" />

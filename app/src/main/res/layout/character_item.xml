@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/charItemIv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_baseline_face_24" />
+
+        <TextView
+            android:id="@+id/tv_charItem_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/charItemIv"
+            android:fontFamily="@font/space_mono_bold"
+            android:text="ROLE"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tv_charItem_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/charItemIv"
+            android:layout_below="@+id/tv_charItem_role"
+            android:fontFamily="@font/space_mono_bold"
+            android:text="Character Title"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tv_charItem_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_charItem_title"
+            android:layout_toEndOf="@+id/charItemIv"
+            android:fontFamily="@font/space_mono_bold"
+            android:text="Character description"
+            android:textColor="#656565"
+            android:textSize="10dp" />
+
+        <ImageView
+            android:id="@+id/delete_character"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_delete_outline_24" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

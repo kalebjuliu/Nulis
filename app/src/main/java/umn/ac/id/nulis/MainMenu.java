@@ -22,6 +22,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import umn.ac.id.nulis.Chapter.ChapterActivity;
+import umn.ac.id.nulis.Character.CharacterActivity;
 import umn.ac.id.nulis.HelperClass.Chapter;
 import umn.ac.id.nulis.Location.LocationActivity;
 
@@ -121,7 +122,8 @@ public class MainMenu extends AppCompatActivity {
         characterCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("CARD", "character");
+                Intent intent = new Intent(getApplicationContext(), CharacterActivity.class);
+                startActivity(intent);
             }
         });
 

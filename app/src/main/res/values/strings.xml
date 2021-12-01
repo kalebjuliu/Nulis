@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">[Nulis].</string>
+    <string-array name="role">
+        <item>PROTAGONIST</item>
+        <item>ANTAGONIST</item>
+    </string-array>
 </resources>
