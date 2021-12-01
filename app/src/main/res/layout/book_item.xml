@@ -38,7 +38,7 @@
             android:layout_below="@id/tv_book_title"
             android:layout_toEndOf="@+id/bookIv"
             android:fontFamily="@font/space_mono"
-            android:textColor="#656565"/>
+            android:textColor="#656565" />
 
         <ImageView
             android:id="@+id/edit_book"

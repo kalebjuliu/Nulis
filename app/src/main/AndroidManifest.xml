@@ -14,7 +14,7 @@
         <activity
             android:name=".Character.AddCharacterActivity"
             android:exported="false"
-            android:parentActivityName=".Character.CharacterActivity"/>
+            android:parentActivityName=".Character.CharacterActivity" />
         <activity
             android:name=".Character.CharacterActivity"
             android:exported="false" />
@@ -44,7 +44,8 @@
             android:parentActivityName=".Dashboard" />
         <activity
             android:name=".Dashboard"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".Authentication.Register"
             android:exported="false"
@@ -68,5 +69,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 
 </manifest>
