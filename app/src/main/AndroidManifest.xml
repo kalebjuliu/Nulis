@@ -17,7 +17,8 @@
             android:parentActivityName=".Character.CharacterActivity" />
         <activity
             android:name=".Character.CharacterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainMenu"/>
         <activity
             android:name=".Location.LocationDetailActivity"
             android:exported="false"
