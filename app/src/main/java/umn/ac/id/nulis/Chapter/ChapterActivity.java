@@ -1,19 +1,18 @@
 package umn.ac.id.nulis.Chapter;
 
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,14 +24,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import umn.ac.id.nulis.Adapter.BookAdapter;
 import umn.ac.id.nulis.Adapter.ChapterAdapter;
-import umn.ac.id.nulis.Dashboard;
-import umn.ac.id.nulis.Dialog.AddDialog;
 import umn.ac.id.nulis.Dialog.AddDialogChapter;
-import umn.ac.id.nulis.HelperClass.Book;
+import umn.ac.id.nulis.Dialog.EditDialogChapter;
 import umn.ac.id.nulis.HelperClass.Chapter;
-import umn.ac.id.nulis.MainMenu;
 import umn.ac.id.nulis.R;
 
 public class ChapterActivity extends AppCompatActivity {
@@ -72,6 +67,7 @@ public class ChapterActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 Log.d("CARD CLICK", list.get(position).getTitle());
             }
+
             @Override
             public void onDeleteClick(int position) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(ChapterActivity.this);
@@ -94,6 +90,11 @@ public class ChapterActivity extends AppCompatActivity {
                 }).setMessage("Are you sure you want to delete this chapter?");
                 builder.show();
             }
+
+            @Override
+            public void onEditClick(int position) {
+                openDialogEdit(position);
+            }
         });
 
         database.addValueEventListener(new ValueEventListener() {
@@ -115,9 +116,6 @@ public class ChapterActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         fabAddChapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,5 +127,19 @@ public class ChapterActivity extends AppCompatActivity {
     private void openDialog() {
         AddDialogChapter addDialog = new AddDialogChapter(bookId);
         addDialog.show(getSupportFragmentManager(), "add chapter");
+    }
+
+    private void openDialogEdit(int position) {
+        SharedPreferences sp1 = this.getSharedPreferences("Book Info", MODE_PRIVATE);
+        bookId = sp1.getString("bId", null);
+
+        Bundle args = new Bundle();
+        args.putString("bookId", bookId);
+        args.putString("chapterId", list.get(position).getcId());
+        args.putString("chapterTitle", list.get(position).getTitle());
+
+        EditDialogChapter editDialogChapter = new EditDialogChapter();
+        editDialogChapter.setArguments(args);
+        editDialogChapter.show(getSupportFragmentManager(), "edit chapter");
     }
 }

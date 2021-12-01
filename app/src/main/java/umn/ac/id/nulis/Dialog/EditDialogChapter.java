@@ -18,11 +18,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-import umn.ac.id.nulis.HelperClass.Book;
 import umn.ac.id.nulis.R;
 
-public class EditDialog extends AppCompatDialogFragment {
-    TextInputLayout bookTitleInput, bookDescInput;
+public class EditDialogChapter extends AppCompatDialogFragment {
+    TextInputLayout chapterTitleInput;
 
     @NonNull
     @Override
@@ -30,36 +29,32 @@ public class EditDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.layout_add_book, null);
+        View view = inflater.inflate(R.layout.layout_add_chapter, null);
 
         Bundle mArgs = getArguments();
         String bookId = mArgs.getString("bookId");
-        String bookTitle = mArgs.getString("bookTitle");
-        String bookDesc = mArgs.getString("bookDesc");
+        String chapterId = mArgs.getString("chapterId");
+        String chapterTitle = mArgs.getString("chapterTitle");
 
         builder.setView(view)
-                .setTitle("Edit book")
+                .setTitle("Edit chapter")
                 .setNegativeButton("cancel", (dialogInterface, i) -> {
 
                 })
                 .setPositiveButton("save", (dialogInterface, i) -> {
-                    String newBookTitle = bookTitleInput.getEditText().getText().toString().trim();
-                    String newBookDesc = bookDescInput.getEditText().getText().toString().trim();
+                    String newChapterTitle = chapterTitleInput.getEditText().getText().toString().trim();
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance("https://nulis-d3354-default-rtdb.asia-southeast1.firebasedatabase.app/");
                     DatabaseReference myRef = database.getReference("Users");
 
                     Map<String, Object> postValues = new HashMap<String,Object>();
-                    postValues.put("title", newBookTitle);
-                    postValues.put("desc", newBookDesc);
+                    postValues.put("title", newChapterTitle);
 
-                    myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book").child(bookId).updateChildren(postValues);
+                    myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book").child(bookId).child("Chapter").child(chapterId).updateChildren(postValues);
                 });
-        bookTitleInput = view.findViewById(R.id.add_book_title);
-        bookDescInput = view.findViewById(R.id.add_book_desc);
+        chapterTitleInput = view.findViewById(R.id.add_chapter_title);
 
-        bookTitleInput.getEditText().setText(bookTitle);
-        bookDescInput.getEditText().setText(bookDesc);
+        chapterTitleInput.getEditText().setText(chapterTitle);
 
         return builder.create();
     }
