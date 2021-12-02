@@ -1,18 +1,8 @@
 package umn.ac.id.nulis;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,6 +10,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +30,6 @@ import java.util.ArrayList;
 
 import umn.ac.id.nulis.Adapter.BookAdapter;
 import umn.ac.id.nulis.Authentication.Login;
-import umn.ac.id.nulis.Authentication.Register;
 import umn.ac.id.nulis.Dialog.AddDialog;
 import umn.ac.id.nulis.Dialog.EditDialog;
 import umn.ac.id.nulis.HelperClass.Book;
@@ -48,7 +44,7 @@ public class Dashboard extends AppCompatActivity {
 
     DatabaseReference database;
     ArrayList<Book> list;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -169,16 +165,14 @@ public class Dashboard extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.logoutBtn:
-                mAuth.signOut();
+        if (item.getItemId() == R.id.logoutBtn) {
+            mAuth.signOut();
 
-                Intent intent = new Intent(Dashboard.this, Login.class);
-                startActivity(intent);
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+            Intent intent = new Intent(Dashboard.this, Login.class);
+            startActivity(intent);
+            finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

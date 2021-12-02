@@ -1,9 +1,6 @@
 package umn.ac.id.nulis.Authentication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -13,9 +10,9 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -71,9 +68,7 @@ public class Login extends AppCompatActivity {
                         startActivity(new Intent(Login.this, Dashboard.class));
                         finish();
                     })
-                    .addOnFailureListener(error -> {
-                        Log.e("Error", error.getMessage());
-                    });
+                    .addOnFailureListener(error -> Log.e("Error", error.getMessage()));
         }
     }
 
