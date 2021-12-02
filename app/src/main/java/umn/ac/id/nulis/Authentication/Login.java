@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,7 +14,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import umn.ac.id.nulis.Dashboard;
 import umn.ac.id.nulis.R;
@@ -31,16 +35,15 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //firebase auth
         mAuth = FirebaseAuth.getInstance();
+        reLogin();
 
         linkToRegister = findViewById(R.id.link_signup_btn);
         loginBtn = findViewById(R.id.login_btn);
         logEmail = findViewById(R.id.email);
         logPassword = findViewById(R.id.password);
         logProgBar = findViewById(R.id.log_progressBar);
-
-//      Shared preferences untuk login credential
-        reLogin();
 
         linkToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,27 +61,24 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    //relogin account after first time login
+    //re-login account after first time login
     private void reLogin() {
-        SharedPreferences sp1 = this.getSharedPreferences("Login", MODE_PRIVATE);
-
-        String savedEmail = sp1.getString("email", null);
-        String savedPassword = sp1.getString("password", null);
-        if (savedEmail != null && savedPassword != null) {
-            logEmail.getEditText().setText(savedEmail);
-            logPassword.getEditText().setText(savedPassword);
-
-            mAuth.signInWithEmailAndPassword(savedEmail, savedPassword).addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    //to home page
-                    startActivity(new Intent(Login.this, Dashboard.class));
-                    finish();
-                }
-            });
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            //refresh id token for login (refresh session)
+            mAuth.getCurrentUser().getIdToken(true)
+                    .addOnCompleteListener(token -> {
+                        startActivity(new Intent(Login.this, Dashboard.class));
+                        finish();
+                    })
+                    .addOnFailureListener(error -> {
+                        Log.e("Error", error.getMessage());
+                    });
         }
     }
 
     private void loginUser() {
+
         String email = logEmail.getEditText().getText().toString().trim();
         String password = logPassword.getEditText().getText().toString().trim();
 
@@ -109,14 +109,6 @@ public class Login extends AppCompatActivity {
         logProgBar.setVisibility(View.VISIBLE);
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                // Save Login Credential
-                SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
-                SharedPreferences.Editor Ed = sp.edit();
-                Ed.putString("email", email);
-                Ed.putString("password", password);
-                Ed.apply();
-                //notes : to logout just set shared preferences (email, password) to null
-
                 //to home page
                 startActivity(new Intent(Login.this, Dashboard.class));
                 finish();
@@ -125,7 +117,5 @@ public class Login extends AppCompatActivity {
                 logProgBar.setVisibility(View.GONE);
             }
         });
-
-
     }
 }

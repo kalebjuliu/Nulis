@@ -40,13 +40,15 @@ import umn.ac.id.nulis.HelperClass.Book;
 
 public class Dashboard extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+
     FloatingActionButton fabAddBook;
     RecyclerView recyclerView;
     BookAdapter bookAdapter;
 
     DatabaseReference database;
     ArrayList<Book> list;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,10 +57,13 @@ public class Dashboard extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.title_appbar_center);
 
+        //firebase auth
+        mAuth = FirebaseAuth.getInstance();
+
         fabAddBook = findViewById(R.id.fab_add_book);
         recyclerView = findViewById(R.id.rv_book);
         database = FirebaseDatabase.getInstance("https://nulis-d3354-default-rtdb.asia-southeast1.firebasedatabase.app/")
-                .getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book");
+                .getReference("Users").child(mAuth.getCurrentUser().getUid()).child("Book");
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -81,6 +86,7 @@ public class Dashboard extends AppCompatActivity {
 
                 startActivity(intent);
             }
+
             @Override
             public void onDeleteClick(int position) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Dashboard.this);
@@ -88,9 +94,9 @@ public class Dashboard extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         database.child(list.get(position).getbId()).removeValue().addOnCompleteListener(task1 -> {
-                            if(task1.isSuccessful()){
+                            if (task1.isSuccessful()) {
                                 Toast.makeText(Dashboard.this, "Book is deleted", Toast.LENGTH_LONG).show();
-                            }else{
+                            } else {
                                 Toast.makeText(Dashboard.this, "Failed to delete book", Toast.LENGTH_LONG).show();
                             }
                         });
@@ -114,7 +120,7 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list.clear();
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Book book = new Book(dataSnapshot.child("title").getValue().toString(),
                             dataSnapshot.child("desc").getValue().toString(),
                             dataSnapshot.getKey());
@@ -165,12 +171,7 @@ public class Dashboard extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.logoutBtn:
-                FirebaseAuth.getInstance().signOut();
-
-                SharedPreferences sp1 = this.getSharedPreferences("Login", MODE_PRIVATE);
-
-                sp1.edit().remove("email").commit();
-                sp1.edit().remove("password").commit();
+                mAuth.signOut();
 
                 Intent intent = new Intent(Dashboard.this, Login.class);
                 startActivity(intent);
