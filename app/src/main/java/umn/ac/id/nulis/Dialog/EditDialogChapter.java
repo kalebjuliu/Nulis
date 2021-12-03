@@ -45,18 +45,17 @@ public class EditDialogChapter extends AppCompatDialogFragment {
                     String newChapterTitle = chapterTitleInput.getEditText().getText().toString().trim();
 
                     //mencegah mengupload data yang sama
-                    if(!newChapterTitle.equals(chapterTitle)){
+                    if (!newChapterTitle.equals(chapterTitle)) {
                         FirebaseDatabase database = FirebaseDatabase.getInstance("https://nulis-d3354-default-rtdb.asia-southeast1.firebasedatabase.app/");
                         DatabaseReference myRef = database.getReference("Users");
 
-                        Map<String, Object> postValues = new HashMap<String,Object>();
+                        Map<String, Object> postValues = new HashMap<String, Object>();
                         postValues.put("title", newChapterTitle);
 
                         myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Book").child(bookId).child("Chapter").child(chapterId).updateChildren(postValues);
                     }
                 });
         chapterTitleInput = view.findViewById(R.id.add_chapter_title);
-
         chapterTitleInput.getEditText().setText(chapterTitle);
 
         return builder.create();

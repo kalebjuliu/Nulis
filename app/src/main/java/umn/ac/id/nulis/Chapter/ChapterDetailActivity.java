@@ -28,6 +28,8 @@ import java.util.ArrayList;
 import umn.ac.id.nulis.Adapter.ChapterAdapter;
 import umn.ac.id.nulis.Adapter.ChapterDetailAdapter;
 import umn.ac.id.nulis.Dialog.AddDialogChapterDetail;
+import umn.ac.id.nulis.Dialog.EditDialogChapter;
+import umn.ac.id.nulis.Dialog.EditDialogChapterDetail;
 import umn.ac.id.nulis.HelperClass.Chapter;
 import umn.ac.id.nulis.HelperClass.ChapterDetail;
 import umn.ac.id.nulis.R;
@@ -86,16 +88,7 @@ public class ChapterDetailActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Log.d("CARD CLICK", list.get(position).getCDetailId());
-//                Intent intent = new Intent(getApplicationContext(), ChapterDetailActivity.class);
-//
-//                SharedPreferences spChapterId = getSharedPreferences("Chapter Info", MODE_PRIVATE);
-//                SharedPreferences.Editor Ed = spChapterId.edit();
-//
-//                Ed.putString("cId", list.get(position).getCDetailId());
-//                Ed.putString("cTitle", list.get(position).getChapterDetailTitle());
-//                Ed.apply();
-//
-//                startActivity(intent);
+//                card click
             }
 
             @Override
@@ -134,8 +127,8 @@ public class ChapterDetailActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     ChapterDetail chapterDetail =
                             new ChapterDetail(dataSnapshot.child("chapterDetailTitle").getValue().toString(),
-                            dataSnapshot.child("chapterDetailContent").getValue().toString(),
-                            dataSnapshot.getKey());
+                                    dataSnapshot.child("chapterDetailContent").getValue().toString(),
+                                    dataSnapshot.getKey());
                     list.add(chapterDetail);
                     Log.d("DEBUG", dataSnapshot.getKey());
                 }
@@ -162,15 +155,27 @@ public class ChapterDetailActivity extends AppCompatActivity {
         addDialog.show(getSupportFragmentManager(), "add chapter content");
     }
 
+    //    Edit chapter content
     private void openDialogEdit(int position) {
         Log.d("DEBUG", "Edit Button clicked");
-//        AddDialogChapterDetail addDialog = new AddDialogChapterDetail(bookId, chapterId);
-//        addDialog.show(getSupportFragmentManager(), "add chapter content");
+
+        Bundle args = new Bundle();
+        args.putString("bookId", bookId);
+        args.putString("chapterId", chapterId);
+        args.putString("contentId", list.get(position).getCDetailId());
+        args.putString("contentTitle", list.get(position).getChapterDetailTitle());
+        args.putString("contentContent", list.get(position).getChapterDetailContent());
+
+        EditDialogChapterDetail editDialogChapterDetail = new EditDialogChapterDetail();
+        editDialogChapterDetail.setArguments(args);
+        editDialogChapterDetail.show(getSupportFragmentManager(), "edit chapter detail");
     }
 
-    //mengedit atau menambahkan detail chapter (seperti karakter, lokasi, dll).
-    private void openDialogChapterDesc() {
-//        AddDialogChapterDetail addDialog = new AddDialogChapterDetail(bookId, chapterId);
-//        addDialog.show(getSupportFragmentManager(), "add chapter content");
-    }
+    //TODO: add function to add chapter content detail (location, character etc).
+//    private void openDialogChapterDesc() {
+//    }
+
+    //TODO: add function to edit chapter content detail (location, character etc).
+//    private void openDialogChapterDescEdit() {
+//    }
 }
