@@ -24,6 +24,10 @@
             android:exported="false"
             android:parentActivityName=".Character.CharacterActivity"/>
         <activity
+            android:name=".Character.EditCharacterActivity"
+            android:exported="false"
+            android:parentActivityName=".Character.CharacterDetailActivity"/>
+        <activity
             android:name=".Location.LocationDetailActivity"
             android:exported="false"
             android:parentActivityName=".Location.LocationActivity" />

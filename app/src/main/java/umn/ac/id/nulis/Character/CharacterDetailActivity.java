@@ -46,6 +46,8 @@ public class CharacterDetailActivity extends AppCompatActivity {
         charaDetailSkills = findViewById(R.id.character_detail_skills);
         charaDetailGender = findViewById(R.id.character_detail_gender);
 
+        editChara = findViewById(R.id.fab_edit_chara);
+
         SharedPreferences sp1 = this.getSharedPreferences("Character Info", MODE_PRIVATE);
         charaId = sp1.getString("chId", null);
         charaTitle = sp1.getString("chTitle", null);
@@ -87,12 +89,12 @@ public class CharacterDetailActivity extends AppCompatActivity {
             }
         });
 
-//        editLocation.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(LocationDetailActivity.this, EditLocationActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        editChara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CharacterDetailActivity.this, EditCharacterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
