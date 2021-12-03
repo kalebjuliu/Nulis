@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:padding="3dp">
+
+    <!--TODO: benerin margin-->
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:padding="12dp">
+
+        <!--TODO: ganti icon jadi yg lain-->
+        <ImageView
+            android:id="@+id/chapterDetailItemIv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_baseline_menu_book_24" />
+
+        <TextView
+            android:id="@+id/tv_chapterDetailItem_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/chapterDetailItemIv"
+            android:ellipsize="end"
+            android:fontFamily="@font/space_mono_bold"
+            android:maxLines="1"
+            android:text="Chapter Title"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:id="@+id/edit_chapter_detail"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/delete_chapter_detail"
+            android:src="@drawable/ic_baseline_edit_24" />
+
+        <ImageView
+            android:id="@+id/delete_chapter_detail"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_baseline_delete_outline_24" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/TextView_garis"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout1" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/TextView_garis">
+
+        <TextView
+            android:id="@+id/tv_chapterDetailItem_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/space_mono"
+            android:hint="Chapter content...."
+            android:justificationMode="inter_word"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
