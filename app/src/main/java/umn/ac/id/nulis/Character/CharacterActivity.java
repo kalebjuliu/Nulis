@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import umn.ac.id.nulis.Adapter.CharacterAdapter;
 import umn.ac.id.nulis.HelperClass.Character;
 import umn.ac.id.nulis.Location.AddLocationActivity;
+import umn.ac.id.nulis.Location.LocationDetailActivity;
 import umn.ac.id.nulis.R;
 
 public class CharacterActivity extends AppCompatActivity {
@@ -67,6 +68,14 @@ public class CharacterActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Log.d("CARD CLICK", list.get(position).getChId());
+                SharedPreferences spLocationId = getSharedPreferences("Character Info", MODE_PRIVATE);
+                SharedPreferences.Editor Ed = spLocationId.edit();
+                Ed.putString("chId", list.get(position).getChId());
+                Ed.putString("chTitle", list.get(position).getTitle());
+                Ed.apply();
+
+                Intent intent = new Intent(getApplicationContext(), CharacterDetailActivity.class);
+                startActivity(intent);
             }
             @Override
             public void onDeleteClick(int position) {

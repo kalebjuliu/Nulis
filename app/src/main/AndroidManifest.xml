@@ -20,6 +20,10 @@
             android:exported="false"
             android:parentActivityName=".MainMenu"/>
         <activity
+            android:name=".Character.CharacterDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".Character.CharacterActivity"/>
+        <activity
             android:name=".Location.LocationDetailActivity"
             android:exported="false"
             android:parentActivityName=".Location.LocationActivity" />

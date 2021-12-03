@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Character.CharacterDetailActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/character_detail_Iv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_baseline_face_24" />
+
+        <TextView
+            android:id="@+id/character_detail_titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:textColor="#636363"
+            android:layout_below="@+id/character_detail_Iv"
+            android:text="Name"/>
+
+        <TextView
+            android:id="@+id/character_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/character_detail_titleText"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/space_mono"
+            android:text="Character Name"
+            android:textColor="@color/black" />
+
+
+        <TextView
+            android:id="@+id/character_detail_descText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/space_mono"
+            android:layout_marginTop="15dp"
+            android:textColor="#636363"
+            android:layout_below="@+id/character_detail_title"
+            android:text="Description"/>
+
+        <TextView
+            android:id="@+id/character_detail_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/character_detail_descText"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/space_mono"
+            android:text="Character description"
+            android:textColor="@color/black" />
+
+
+
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_edit_chara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="32dp"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:backgroundTint="@color/white" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
