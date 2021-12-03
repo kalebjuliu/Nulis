@@ -1,76 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".Character.CharacterDetailActivity">
+<ScrollView android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
 
-
-    <RelativeLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:context=".Character.CharacterDetailActivity">
 
-        <ImageView
-            android:id="@+id/character_detail_Iv"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_baseline_face_24" />
 
-        <TextView
-            android:id="@+id/character_detail_titleText"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/character_detail_Iv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_baseline_face_24" />
+
+            <TextView
+                android:id="@+id/character_detail_titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_Iv"
+                android:fontFamily="@font/space_mono"
+                android:text="Name"
+                android:textColor="#636363" />
+
+            <TextView
+                android:id="@+id/character_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_titleText"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Character Name"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/character_detail_descText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_title"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Description"
+                android:textColor="#636363" />
+
+            <TextView
+                android:id="@+id/character_detail_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_descText"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Character description"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/character_detail_roleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_mono"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/character_detail_desc"
+                android:text="Role"
+                android:textColor="#636363" />
+
+            <TextView
+                android:id="@+id/character_detail_role"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_roleText"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Role description"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/character_detail_goalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_mono"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/character_detail_role"
+                android:text="Goal"
+                android:textColor="#636363" />
+
+            <TextView
+                android:id="@+id/character_detail_goal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_goalText"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Goal description"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/character_detail_outcomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_mono"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/character_detail_goal"
+                android:text="Outcome"
+                android:textColor="#636363" />
+
+            <TextView
+                android:id="@+id/character_detail_outcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_outcomeText"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Outcome description"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/character_detail_strengthText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_mono"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/character_detail_outcome"
+                android:text="Strength"
+                android:textColor="#636363" />
+
+            <TextView
+                android:id="@+id/character_detail_strength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_strengthText"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Strength description"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/character_detail_weaknessText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_mono"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/character_detail_strength"
+                android:text="Weakness"
+                android:textColor="#636363" />
+
+            <TextView
+                android:id="@+id/character_detail_weakness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_weaknessText"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Weakness description"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/character_detail_skillsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_mono"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/character_detail_weakness"
+                android:text="Skills"
+                android:textColor="#636363" />
+
+            <TextView
+                android:id="@+id/character_detail_skills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_skillsText"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Skills description"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/character_detail_genderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/space_mono"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/character_detail_skills"
+                android:text="Gender"
+                android:textColor="#636363" />
+
+            <TextView
+                android:id="@+id/character_detail_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/character_detail_genderText"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/space_mono"
+                android:text="Gender description"
+                android:textColor="@color/black" />
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_edit_chara"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/space_mono"
-            android:textColor="#636363"
-            android:layout_below="@+id/character_detail_Iv"
-            android:text="Name"/>
+            android:layout_gravity="bottom|end"
+            android:layout_margin="32dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:backgroundTint="@color/white" />
 
-        <TextView
-            android:id="@+id/character_detail_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/character_detail_titleText"
-            android:layout_marginLeft="15dp"
-            android:fontFamily="@font/space_mono"
-            android:text="Character Name"
-            android:textColor="@color/black" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-
-        <TextView
-            android:id="@+id/character_detail_descText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/space_mono"
-            android:layout_marginTop="15dp"
-            android:textColor="#636363"
-            android:layout_below="@+id/character_detail_title"
-            android:text="Description"/>
-
-        <TextView
-            android:id="@+id/character_detail_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/character_detail_descText"
-            android:layout_marginLeft="15dp"
-            android:fontFamily="@font/space_mono"
-            android:text="Character description"
-            android:textColor="@color/black" />
-
-
-
-    </RelativeLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_edit_chara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="32dp"
-        android:src="@drawable/ic_baseline_edit_24"
-        app:backgroundTint="@color/white" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</ScrollView>

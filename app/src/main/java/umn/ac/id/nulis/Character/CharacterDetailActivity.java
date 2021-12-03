@@ -29,7 +29,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
     FloatingActionButton editChara;
     String bookId, charaId, charaTitle;
 
-    TextView charaDetailTitle, charaDetailDesc;
+    TextView charaDetailTitle, charaDetailDesc, charaDetailRole, charaDetailGoal, charaDetailOutcome, charaDetailStrength, charaDetailWeakness, charaDetailSkills, charaDetailGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,13 @@ public class CharacterDetailActivity extends AppCompatActivity {
 
         charaDetailTitle = findViewById(R.id.character_detail_title);
         charaDetailDesc = findViewById(R.id.character_detail_desc);
+        charaDetailRole = findViewById(R.id.character_detail_role);
+        charaDetailGoal = findViewById(R.id.character_detail_goal);
+        charaDetailOutcome = findViewById(R.id.character_detail_outcome);
+        charaDetailStrength = findViewById(R.id.character_detail_strength);
+        charaDetailWeakness = findViewById(R.id.character_detail_weakness);
+        charaDetailSkills = findViewById(R.id.character_detail_skills);
+        charaDetailGender = findViewById(R.id.character_detail_gender);
 
         SharedPreferences sp1 = this.getSharedPreferences("Character Info", MODE_PRIVATE);
         charaId = sp1.getString("chId", null);
@@ -64,6 +71,13 @@ public class CharacterDetailActivity extends AppCompatActivity {
                         Log.d("Character", dataSnapshot.child("title").getValue().toString());
                         charaDetailTitle.setText(dataSnapshot.child("title").getValue().toString());
                         charaDetailDesc.setText(dataSnapshot.child("description").getValue().toString());
+                        charaDetailRole.setText(dataSnapshot.child("role").getValue().toString());
+                        charaDetailGoal.setText(dataSnapshot.child("goal").getValue().toString());
+                        charaDetailOutcome.setText(dataSnapshot.child("outcome").getValue().toString());
+                        charaDetailStrength.setText(dataSnapshot.child("strength").getValue().toString());
+                        charaDetailWeakness.setText(dataSnapshot.child("weakness").getValue().toString());
+                        charaDetailSkills.setText(dataSnapshot.child("skills").getValue().toString());
+                        charaDetailGender.setText(dataSnapshot.child("gender").getValue().toString());
                     }
                 }
             }
