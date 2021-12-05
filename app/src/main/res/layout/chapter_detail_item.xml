@@ -26,10 +26,12 @@
 
         <TextView
             android:id="@+id/tv_chapterDetailItem_title"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="14dp"
+            android:layout_toStartOf="@+id/edit_chapter_detail"
             android:layout_toEndOf="@+id/chapterDetailItemIv"
             android:ellipsize="end"
             android:fontFamily="@font/space_mono_bold"
