@@ -5,12 +5,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +31,8 @@ public class CharacterDetailActivity extends AppCompatActivity {
     FloatingActionButton editChara;
     String bookId, charaId, charaTitle;
 
-    TextView charaDetailTitle, charaDetailDesc, charaDetailRole, charaDetailGoal, charaDetailOutcome, charaDetailStrength, charaDetailWeakness, charaDetailSkills, charaDetailGender;
+    TextView charaDetailTitle, charaDetailDesc, charaDetailRole, charaDetailGoal, charaDetailOutcome, charaDetailStrength, charaDetailWeakness, charaDetailSkills;
+    ImageView charaDetailIv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,8 @@ public class CharacterDetailActivity extends AppCompatActivity {
         charaDetailStrength = findViewById(R.id.character_detail_strength);
         charaDetailWeakness = findViewById(R.id.character_detail_weakness);
         charaDetailSkills = findViewById(R.id.character_detail_skills);
-        charaDetailGender = findViewById(R.id.character_detail_gender);
+
+        charaDetailIv = findViewById(R.id.character_detail_Iv);
 
         editChara = findViewById(R.id.fab_edit_chara);
 
@@ -79,7 +83,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
                         charaDetailStrength.setText(dataSnapshot.child("strength").getValue().toString());
                         charaDetailWeakness.setText(dataSnapshot.child("weakness").getValue().toString());
                         charaDetailSkills.setText(dataSnapshot.child("skills").getValue().toString());
-                        charaDetailGender.setText(dataSnapshot.child("gender").getValue().toString());
+                        Glide.with(getApplicationContext()).load(dataSnapshot.child("imgUrl").getValue().toString()).into(charaDetailIv);
                     }
                 }
             }
@@ -92,6 +96,7 @@ public class CharacterDetailActivity extends AppCompatActivity {
         editChara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                charaDetailIv.setImageResource(R.drawable.ic_baseline_face_24);
                 Intent intent = new Intent(CharacterDetailActivity.this, EditCharacterActivity.class);
                 startActivity(intent);
             }

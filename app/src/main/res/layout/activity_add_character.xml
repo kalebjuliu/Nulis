@@ -11,19 +11,29 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <ImageView
+
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/characterFaceIv"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_baseline_face_24" />
+            android:src="@drawable/ic_baseline_face_24"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/black"/>
+        <Button
+            android:id="@+id/selectCharacter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/characterFaceIv"
+            android:text="Select Image"
+            android:layout_centerHorizontal="true" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_character_title"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/characterFaceIv"
+            android:layout_below="@+id/selectCharacter"
             android:layout_marginTop="15dp"
             android:hint="Name">
 

@@ -1,10 +1,10 @@
 package umn.ac.id.nulis.HelperClass;
 
 public class Character {
-    String chId, title, description, role, goal, outcome, strength, weakness, skills, gender;
+    String chId, title, description, role, goal, outcome, strength, weakness, skills, imgUrl;
     public Character(){}
     public Character(String title, String description, String role, String goal, String outcome, String strength,
-                     String weakness, String skills, String gender){
+                     String weakness, String skills, String imgUrl){
         this.title = title;
         this.description = description;
         this.role = role;
@@ -13,10 +13,10 @@ public class Character {
         this.strength = strength;
         this.weakness = weakness;
         this.skills = skills;
-        this.gender = gender;
+        this.imgUrl = imgUrl;
     }
     public Character(String title, String description, String role, String goal, String outcome, String strength,
-                     String weakness, String skills, String gender, String chId){
+                     String weakness, String skills, String imgUrl, String chId){
         this.title = title;
         this.description = description;
         this.role = role;
@@ -25,7 +25,7 @@ public class Character {
         this.strength = strength;
         this.weakness = weakness;
         this.skills = skills;
-        this.gender = gender;
+        this.imgUrl = imgUrl;
         this.chId = chId;
     }
 
@@ -65,7 +65,7 @@ public class Character {
         return skills;
     }
 
-    public String getGender() {
-        return gender;
+    public String getImgUrl() {
+        return imgUrl;
     }
 }

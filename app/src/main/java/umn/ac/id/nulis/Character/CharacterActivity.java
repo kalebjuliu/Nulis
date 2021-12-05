@@ -22,10 +22,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
 import umn.ac.id.nulis.Adapter.CharacterAdapter;
+import umn.ac.id.nulis.Chapter.ChapterActivity;
 import umn.ac.id.nulis.HelperClass.Character;
 import umn.ac.id.nulis.Location.AddLocationActivity;
 import umn.ac.id.nulis.Location.LocationDetailActivity;
@@ -40,6 +43,8 @@ public class CharacterActivity extends AppCompatActivity {
 
     DatabaseReference database;
     ArrayList<Character> list;
+
+    FirebaseStorage mStorage = FirebaseStorage.getInstance("gs://nulis-d3354.appspot.com");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +84,27 @@ public class CharacterActivity extends AppCompatActivity {
             }
             @Override
             public void onDeleteClick(int position) {
-                Log.d("DELETE CLICK", "DELETE");
+                AlertDialog.Builder builder = new AlertDialog.Builder(CharacterActivity.this);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        StorageReference oldImgRef = mStorage.getReferenceFromUrl(list.get(position).getImgUrl());
+                        oldImgRef.delete();
+                        database.child(list.get(position).getChId()).removeValue().addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()) {
+                                Toast.makeText(CharacterActivity.this, "Character is deleted", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(CharacterActivity.this, "Failed to delete character", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setMessage("Are you sure you want to delete this character?");
+                builder.show();
             }
         });
 
@@ -97,7 +122,7 @@ public class CharacterActivity extends AppCompatActivity {
                             dataSnapshot.child("strength").getValue().toString(),
                             dataSnapshot.child("weakness").getValue().toString(),
                             dataSnapshot.child("skills").getValue().toString(),
-                            dataSnapshot.child("gender").getValue().toString(),
+                            dataSnapshot.child("imgUrl").getValue().toString(),
                             dataSnapshot.getKey()
                     );
                     list.add(character);
