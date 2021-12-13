@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="umn.ac.id.nulis">
+    package="ac.umn.id.nulis">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,62 +12,62 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nulis">
         <activity
-            android:name=".Chapter.ChapterDetailActivity"
+            android:name="ac.umn.id.nulis.Chapter.ChapterDetailActivity"
             android:exported="false"
-            android:parentActivityName=".Chapter.ChapterActivity"/>
+            android:parentActivityName="ac.umn.id.nulis.Chapter.ChapterActivity"/>
         <activity
-            android:name=".Character.AddCharacterActivity"
+            android:name="ac.umn.id.nulis.Character.AddCharacterActivity"
             android:exported="false"
-            android:parentActivityName=".Character.CharacterActivity" />
+            android:parentActivityName="ac.umn.id.nulis.Character.CharacterActivity" />
         <activity
-            android:name=".Character.CharacterActivity"
+            android:name="ac.umn.id.nulis.Character.CharacterActivity"
             android:exported="false"
-            android:parentActivityName=".MainMenu" />
+            android:parentActivityName="ac.umn.id.nulis.MainMenu" />
         <activity
-            android:name=".Character.CharacterDetailActivity"
+            android:name="ac.umn.id.nulis.Character.CharacterDetailActivity"
             android:exported="false"
-            android:parentActivityName=".Character.CharacterActivity"/>
+            android:parentActivityName="ac.umn.id.nulis.Character.CharacterActivity"/>
         <activity
-            android:name=".Character.EditCharacterActivity"
+            android:name="ac.umn.id.nulis.Character.EditCharacterActivity"
             android:exported="false"
-            android:parentActivityName=".Character.CharacterDetailActivity"/>
+            android:parentActivityName="ac.umn.id.nulis.Character.CharacterDetailActivity"/>
         <activity
-            android:name=".Location.LocationDetailActivity"
+            android:name="ac.umn.id.nulis.Location.LocationDetailActivity"
             android:exported="false"
-            android:parentActivityName=".Location.LocationActivity" />
+            android:parentActivityName="ac.umn.id.nulis.Location.LocationActivity" />
         <activity
-            android:name=".Location.EditLocationActivity"
+            android:name="ac.umn.id.nulis.Location.EditLocationActivity"
             android:exported="false"
-            android:parentActivityName=".Location.LocationActivity" />
+            android:parentActivityName="ac.umn.id.nulis.Location.LocationActivity" />
         <activity
-            android:name=".Location.AddLocationActivity"
+            android:name="ac.umn.id.nulis.Location.AddLocationActivity"
             android:exported="false"
-            android:parentActivityName=".Location.LocationActivity" />
+            android:parentActivityName="ac.umn.id.nulis.Location.LocationActivity" />
         <activity
-            android:name=".Chapter.ChapterActivity"
+            android:name="ac.umn.id.nulis.Chapter.ChapterActivity"
             android:exported="false"
-            android:parentActivityName=".MainMenu" />
+            android:parentActivityName="ac.umn.id.nulis.MainMenu" />
         <activity
-            android:name=".Location.LocationActivity"
+            android:name="ac.umn.id.nulis.Location.LocationActivity"
             android:exported="false"
-            android:parentActivityName=".MainMenu" />
+            android:parentActivityName="ac.umn.id.nulis.MainMenu" />
         <activity
-            android:name=".MainMenu"
+            android:name="ac.umn.id.nulis.MainMenu"
             android:exported="false"
-            android:parentActivityName=".Dashboard" />
+            android:parentActivityName="ac.umn.id.nulis.Dashboard" />
         <activity
-            android:name=".Dashboard"
+            android:name="ac.umn.id.nulis.Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Authentication.Register"
+            android:name="ac.umn.id.nulis.Authentication.Register"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
-            android:name=".Authentication.Login"
+            android:name="ac.umn.id.nulis.Authentication.Login"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" /> <!-- Remove Action Bar on MainActivity -->
         <activity
-            android:name=".MainActivity"
+            android:name="ac.umn.id.nulis.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
             <intent-filter>
